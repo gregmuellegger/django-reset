@@ -43,7 +43,7 @@ Type 'yes' to continue, or 'no' to cancel: """ % (app_name, connection.settings_
                 cursor = connection.cursor()
                 for sql in sql_list:
                     cursor.execute(sql)
-            except Exception, e:
+            except Exception as e:
                 transaction.rollback_unless_managed()
                 raise CommandError("""Error: %s couldn't be reset. Possible reasons:
   * The database isn't running or isn't configured correctly.
@@ -53,4 +53,4 @@ Hint: Look at the output of 'django-admin.py sqlreset %s'. That's the SQL this c
 The full error: %s""" % (app_name, app_name, e))
             transaction.commit_unless_managed()
         else:
-            print "Reset cancelled."
+            print("Reset cancelled.")

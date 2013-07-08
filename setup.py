@@ -3,6 +3,7 @@
 import codecs
 import os
 import re
+import sys
 from setuptools import find_packages, setup
 
 
@@ -15,8 +16,13 @@ def find_version(*file_paths):
     raise RuntimeError("Unable to find version string.")
 
 
-def read(*parts):
-    return codecs.open(os.path.join(os.path.dirname(__file__), *parts)).read()
+if sys.version_info[0] < 3:
+    def read(*parts):
+        return codecs.open(os.path.join(os.path.dirname(__file__), *parts)).read()
+
+else:
+    def read(*parts):
+        return open(os.path.join(os.path.dirname(__file__), *parts), 'r').read()
 
 
 class UltraMagicString(object):
@@ -71,6 +77,8 @@ setup(
         'Programming Language :: Python :: 2.5',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3.2',
+        'Programming Language :: Python :: 3.3',
     ],
     install_requires = [],
 )
