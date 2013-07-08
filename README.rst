@@ -12,6 +12,21 @@ app.
 
 Full credits for the code goes to the awesome Django project.
 
+Installation
+============
+
+1. Install ``django-reset`` with pip::
+    
+    pip install django-reset
+
+2. Add ``'django_reset'`` to your ``INSTALLED_APPS`` setting::
+
+    INSTALLED_APPS = (
+        ...
+        'django_reset',
+        ...
+    )
+
 Usage
 =====
 
